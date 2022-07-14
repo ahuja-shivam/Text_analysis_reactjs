@@ -61,7 +61,7 @@ export default function Forms(props) {
             
             <div className="mb-3 my-5">
                 <h1>{props.heading}</h1>
-                <textarea className="form-control" value = {text} onChange = {HandleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+                <textarea className={`form-control bg-${props.mode} text-${props.mode ==='dark'?'light':'dark'}`} value = {text} onChange = {HandleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
             <div className="containerx">(This box only recieves input of less than 350 chrancters)</div>
             <div className="btn btn-dark my-1" type = "submit" onClick={HandleOnClick}>

@@ -90,9 +90,14 @@
 
 .follow{
   text-decoration: none;
+  color: black;
 }
 
 a.follow:hover{
  text-decoration: underline;
 }
   
+
+.radio_button{
+  color: white;
+}
