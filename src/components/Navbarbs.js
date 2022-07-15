@@ -42,13 +42,13 @@ export default function Navbarbs(props) {
                                 <li>
                                     <div className="form-check form-switch">
                                         <input
-                                            class="form-check-input"
+                                            className="form-check-input"
                                             type="checkbox"
                                             role="switch"
                                             id="flexSwitchCheckChecked"
                                             onClick={props.toggleMode}
                                         />
-                                        <label className={`form-check-label text-${props.mode === 'dark'?'light': 'dark'}`} htmlfor="flexSwitchCheckDefault">
+                                        <label className={`form-check-label text-${props.mode === 'dark'?'light': 'dark'}`} htmlFor="flexSwitchCheckDefault">
                                             Dark Mode
                                         </label>
                                     </div>
