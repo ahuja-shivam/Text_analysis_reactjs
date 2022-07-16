@@ -64,7 +64,7 @@ export default function Forms(props) {
                 <textarea className={`form-control bg-${props.mode} text-${props.mode ==='dark'?'light':'dark'}`} value = {text} onChange = {HandleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
             <div className="containerx">(This box only recieves input of less than 350 chrancters)</div>
-            <div className="btn btn-dark my-1" type = "submit" onClick={HandleOnClick}>
+            <div className="btn btn-primary my-1" type = "submit" onClick={HandleOnClick}>
                 Upper Case
             </div>
             <br />

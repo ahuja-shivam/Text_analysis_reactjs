@@ -1,8 +1,9 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 export default function Navbarbs(props) {
     return (
-        <div className="FixedNav">
+        <div>
             <div className={`bg-${props.mode} collapse`} id="navbarHeader">
                 <div className="container">
                     <div className="row">
@@ -12,6 +13,7 @@ export default function Navbarbs(props) {
                                 Word Analysis is an app which will let you analysis your text.
                             </p>
                         </div>
+
                         <div className="col-sm-4 offset-md-1 py-4">
                             <h4 className={`text-${props.mode ==='light'?'black': 'white'}`}>Contact</h4>
                             <ul className="list-unstyled">
@@ -31,6 +33,7 @@ export default function Navbarbs(props) {
                                         Like on Instagram
                                     </a>
                                 </li>
+                                
                                 <li>
                                     <a
                                         href="https://github.com/ahuja-shivam"
@@ -60,10 +63,13 @@ export default function Navbarbs(props) {
             </div>
             <div className={`navbar navbar-${props.mode} bg-${props.mode} shadow-sm`}>
                 <div className="container">
-                    <a href="/" className="navbar-brand d-flex align-items-center">
+                    <Link to="/" className="navbar-brand d-flex align-items-center">
                         <strong>Text Analysis</strong>
-                    </a>
-                    
+                    </Link>
+                                <Link to="/teams" className={`text-${props.mode === 'dark'?'white':'black'} follow`}>
+                                Our team
+                        </Link>
+                                
                     <button
                         className="navbar-toggler collapsed"
                         type="button"

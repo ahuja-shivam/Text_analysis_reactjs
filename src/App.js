@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import React,{useState} from 'react';
 import './App.css';
 import Forms from './components/Forms';
 import Navbarbs from './components/Navbarbs';
+import Teams from './components/Teams';
 import Alerts from './components/Alerts';
+import { BrowserRouter,Routes, Route } from "react-router-dom";
 
 function App() {
   const  [Mode, setMode] = useState('light');
@@ -34,11 +36,16 @@ function App() {
   }
   return (
     <div>
-    <Navbarbs home='Home' about='About' mode = {Mode} toggleMode = {toggleMode}/>
-    <Alerts alert = {alert}/> 
-    <div className="container">
-    <Forms heading = "Enter the text here" mode = {Mode}/>
-    </div>
+      <BrowserRouter>
+        <Navbarbs home='Home' about='About' mode = {Mode} toggleMode = {toggleMode}/>
+        <Alerts alert = {alert}/> 
+        <div className="container">
+              <Routes>
+                <Route exact path="/" element={<Forms heading = "Enter the text here" mode = {Mode}/>}></Route>
+                <Route exact path="/teams" element={<Teams/>}></Route>
+              </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   )
 }
