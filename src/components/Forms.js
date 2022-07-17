@@ -2,17 +2,17 @@ import React, {useState} from 'react'
 
 
 export default function Forms(props) {
-    const [text, setText] = useState("Enter text here.....");
-
-    const HandleOnClick = () => {
-        var newText = text.toUpperCase();
-        setText(newText);
+    const placeholder = "Enter text here...";
+    const [text, setText] = useState("");
+    const [spellCheck, setSpellCheck] = useState(false);
+    const enableSpellCheck = () => {
+        setSpellCheck(!spellCheck);
     }
-    const HandleOnClick_2 = () => {
+    const downloadText = () => {
         var newText = text.toLowerCase();
         setText(newText);
     }
-    const HandleOnClick_3 = () => {
+    const clearText = () => {
         setText("");
     }
 
@@ -20,7 +20,7 @@ export default function Forms(props) {
         console.log(event.nativeEvent.inputType);
         setText(event.target.value);
         
-        if(text.length>349){
+        if(text.length>499){
             if(event.nativeEvent.inputType === "deleteContentBackward"){
                 setText(event.target.value);
             }
@@ -56,35 +56,29 @@ export default function Forms(props) {
         return ans;
     }
     return (
-
         <div className='forms'>
-            
             <div className="mb-3 my-5">
                 <h1>{props.heading}</h1>
-                <textarea className={`form-control bg-${props.mode} text-${props.mode ==='dark'?'light':'dark'}`} value = {text} onChange = {HandleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+                <textarea className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} placeholder={placeholder} spellCheck={spellCheck} onChange={HandleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
-            <div className="containerx">(This box only recieves input of less than 350 chrancters)</div>
-            <div className="btn btn-primary my-1" type = "submit" onClick={HandleOnClick}>
-                Upper Case
-            </div>
-            <br />
-            <div className="btn btn-success second_button my-1" type = "submit" onClick={HandleOnClick_2}>
-                Lower case
-            </div>
-            <br />
-            <div className="btn btn-danger  my-1" type = "submit" onClick={HandleOnClick_3}>
+            <div>(This box only recieves input of less than 500 chrancters)</div>
+            <button className="btn btn-primary button-custom" type="submit" onClick={enableSpellCheck}>
+                Spell Check
+            </button>
+            <button className="btn btn-success button-custom" type="submit" onClick={downloadText}>
+                Download
+            </button>
+            <button className="btn btn-danger button-custom" type="submit" onClick={clearText}>
                 Clear
-            </div>
-            
-            <div className="container my-3">
+            </button>
+            <div>
                 <h1>The text summary</h1>
-                <ul> 
-                    <li>The length of the text is {text.length} </li>
-                    <li>The number of words are {text.split(" ").length}</li>
+                <ul>
+                    <li>The number of paragraphs are: {text.length === 0 ? 0 : text.split('\n').length} </li>
+                    <li>The number of words are: {text.length === 0 ? 0 : text.split(' ').length}</li>
                     <li>Estimated time to read this paragraph is {time_calculate(text.length)}.</li>
                 </ul>
             </div>
-
         </div>
     )
 }
