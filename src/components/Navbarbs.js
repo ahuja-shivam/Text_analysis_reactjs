@@ -63,9 +63,9 @@ export default function Navbarbs(props) {
             </div>
             <div className={`navbar navbar-${props.mode} bg-${props.mode} shadow-sm`}>
                 <div className="container">
-                    <Link to="/" className="navbar-brand d-flex align-items-center">
+                    <a href="/" className="navbar-brand d-flex align-items-center">
                         <strong>IELTS Writing Practice</strong>
-                    </Link>
+                    </a>
                                 
                     <button
                         className="navbar-toggler collapsed"
