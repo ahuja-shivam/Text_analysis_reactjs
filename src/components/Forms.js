@@ -89,13 +89,11 @@ export default function Forms(props) {
     return (
         <div className='forms'>
             <div className="mb-3 my-5">
-                <h2>Enter the title Here</h2>
-            <input className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} id = "title_id"type="text" placeholder="Title here...."/>
+                <textarea id ="title_id" className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} placeholder={`Title`} rows="1"></textarea>
             <br />
                 <h3>{props.heading}</h3>
             <textarea className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} placeholder={`${placeholder}`} spellCheck={spellCheck} onChange={HandleOnChange} id="para_id" rows="10"></textarea>
             </div>
-            <h5>Enter the File name here</h5> <h6>(The file will be saved in .txt format)</h6>
             <input className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'} w-25`} id = "name_id" type="text" placeholder=" ex. abc"/>
             <br />  
             <div>(This box only recieves input of less than 500 chrancters)</div>

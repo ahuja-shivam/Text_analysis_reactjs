@@ -41,7 +41,7 @@ function App() {
         <Alerts alert = {alert}/> 
         <div className="container">
           
-            <Forms heading = "Enter the text here" mode = {Mode}/>
+            <Forms mode = {Mode}/>
             {/* <Route exact path="/teams" element={<Teams/>}></Route> */}
         </div>
       </BrowserRouter>
