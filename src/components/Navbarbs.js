@@ -66,9 +66,6 @@ export default function Navbarbs(props) {
                     <Link to="/" className="navbar-brand d-flex align-items-center">
                         <strong>IELTS Writing Practice</strong>
                     </Link>
-                                <Link to="/teams" className={`text-${props.mode === 'dark'?'white':'black'} follow`}>
-                                Our team
-                        </Link>
                                 
                     <button
                         className="navbar-toggler collapsed"

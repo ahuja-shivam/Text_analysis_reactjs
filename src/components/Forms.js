@@ -1,23 +1,55 @@
 import React, {useState} from 'react'
 
 
+var temp = 0;
+
 export default function Forms(props) {
     const placeholder = "Enter text here...";
     const [text, setText] = useState("");
     const [spellCheck, setSpellCheck] = useState(false);
     const enableSpellCheck = () => {
         setSpellCheck(!spellCheck);
-    }
-    const downloadText = () => {
-        var newText = text.toLowerCase();
-        setText(newText);
-    }
+        console.log("spell clicked", spellCheck)
+    };
+    const downloadText = (filename, content) => {
+    
+        const element = document.createElement('a');
+        const blob = new Blob([content], { type: 'plain/text' });
+        const fileUrl = URL.createObjectURL(blob);
+        element.setAttribute('href', fileUrl);
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        if(temp === 0)
+        element.click();
+        document.body.removeChild(element);  
+        console.log("downloaded")
+        temp = 1;
+    
+    };
+    window.onload = () => {
+        document.getElementById('download').
+        addEventListener('click', e => {
+
+          var filename = document.getElementById('name_id').value;
+          filename = filename + ".txt";
+          var content = document.getElementById('title_id').value;
+          content = content + "\n \n \n"
+          content = content + document.getElementById('para_id').value;
+        //   console.log(document.getElementById('title_id').value)
+          
+          if (filename && content) {
+            temp = 0;
+            downloadText(filename, content);
+          }
+          console.log(filename, content)
+        });
+      };
     const clearText = () => {
         setText("");
-    }
+    };
 
     const HandleOnChange = (event) =>{
-        console.log(event.nativeEvent.inputType);
         setText(event.target.value);
         
         if(text.length>499){
@@ -34,7 +66,7 @@ export default function Forms(props) {
         setText(text);  
     }
     const time_calculate = (x) => {
-        x = (x/10)*3;
+        x = (x/50)*3;
         var minutes = 0;
         var ans = "";
         var seconds = 0;
@@ -46,7 +78,6 @@ export default function Forms(props) {
             }
             x--;
         }
-        console.log(x)
         if (minutes>0){
             ans =  minutes + " mins " + seconds + " sec";
         }
@@ -58,18 +89,24 @@ export default function Forms(props) {
     return (
         <div className='forms'>
             <div className="mb-3 my-5">
-                <h1>{props.heading}</h1>
-                <textarea className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} placeholder={placeholder} spellCheck={spellCheck} onChange={HandleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
+                <h2>Enter the title Here</h2>
+            <input className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} id = "title_id"type="text" placeholder="Title here...."/>
+            <br />
+                <h3>{props.heading}</h3>
+            <textarea className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'}`} placeholder={`${placeholder}`} spellCheck={spellCheck} onChange={HandleOnChange} id="para_id" rows="10"></textarea>
             </div>
+            <h5>Enter the File name here</h5> <h6>(The file will be saved in .txt format)</h6>
+            <input className={`form-control bg-${props.mode} text-${props.mode === 'dark' ? 'light' : 'dark'} w-25`} id = "name_id" type="text" placeholder=" ex. abc"/>
+            <br />  
             <div>(This box only recieves input of less than 500 chrancters)</div>
-            <button className="btn btn-primary button-custom" type="submit" onClick={enableSpellCheck}>
+            <button className="btn btn-success button-custom" type="submit" onClick={enableSpellCheck}>
                 Spell Check
-            </button>
-            <button className="btn btn-success button-custom" type="submit" onClick={downloadText}>
-                Download
             </button>
             <button className="btn btn-danger button-custom" type="submit" onClick={clearText}>
                 Clear
+            </button>
+            <button className="btn btn-primary button-custom" id = "download" type="submit" onClick={downloadText}>
+                Download
             </button>
             <div>
                 <h1>The text summary</h1>

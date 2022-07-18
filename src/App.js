@@ -19,7 +19,7 @@ function App() {
     }
     else{
       setMode("dark");
-      document.body.style.backgroundColor = 'rgb(38, 38, 38)';
+      document.body.style.backgroundColor = 'rgb(50, 50, 50)';
       document.body.style.color = 'white'; 
       showAlert("Dark Mode is unabled", "success");      
     }
