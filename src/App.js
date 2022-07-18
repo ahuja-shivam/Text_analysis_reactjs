@@ -40,10 +40,9 @@ function App() {
         <Navbarbs home='Home' about='About' mode = {Mode} toggleMode = {toggleMode}/>
         <Alerts alert = {alert}/> 
         <div className="container">
-          <Routes>
-            <Route exact path="/" element={<Forms heading = "Enter the text here" mode = {Mode}/>}></Route>
-            <Route exact path="/teams" element={<Teams/>}></Route>
-          </Routes>
+          
+            <Forms heading = "Enter the text here" mode = {Mode}/>
+            {/* <Route exact path="/teams" element={<Teams/>}></Route> */}
         </div>
       </BrowserRouter>
     </div>
