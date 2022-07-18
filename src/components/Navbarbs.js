@@ -64,7 +64,7 @@ export default function Navbarbs(props) {
             <div className={`navbar navbar-${props.mode} bg-${props.mode} shadow-sm`}>
                 <div className="container">
                     <Link to="/" className="navbar-brand d-flex align-items-center">
-                        <strong>Text Analysis</strong>
+                        <strong>IELTS Writing Practice</strong>
                     </Link>
                                 <Link to="/teams" className={`text-${props.mode === 'dark'?'white':'black'} follow`}>
                                 Our team
