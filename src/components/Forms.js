@@ -46,7 +46,8 @@ export default function Forms(props) {
         });
       };
     const clearText = () => {
-        setText("");
+        document.getElementById('para_id').value = "";
+        document.getElementById('para_id').placeholder = placeholder;
     };
 
     const HandleOnChange = (event) =>{
